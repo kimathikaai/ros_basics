@@ -1,4 +1,5 @@
-#include "ros/ros.h"
+// Includees all headers necessary to use common public pieces of the ros system
+#include "ros/ros.h" 
 #include "std_msgs/String.h"
 
 #include <sstream>
@@ -47,14 +48,21 @@ int main(int argc, char **argv)
    */
   ros::Publisher chatter_pub = n.advertise<std_msgs::String>("chatter", 1000);
 
-  ros::Rate loop_rate(1.0); // Mesasages per second
+  ros::Rate loop_rate(100); // Mesasages per second
 
   /**
    * A count of how many messages we have sent. This is used to create
    * a unique string for each message.
    */
   int count = 0;
-  while (ros::ok()) // Keep spinningloop until user presses Ctrl+C
+  /**
+  * ros::ok() will return false if:
+  * a SIGINT is recieved (Ctrl-C)
+  * we have been kicked off the network by another node with the same name
+  * ros::shutdown() has been called by another part of the application
+  * all ros::NodeHandles have been destroyed
+  */
+  while (ros::ok())
   {
     /**
      * This is a message object. You stuff it with data, and then publish it.
@@ -62,7 +70,7 @@ int main(int argc, char **argv)
     std_msgs::String msg;
 
     std::stringstream ss;
-    ss << "hello world " << count;
+    ss << "Hello World " << count;
     msg.data = ss.str(); // Assign the string data to ROS message data field
 
 

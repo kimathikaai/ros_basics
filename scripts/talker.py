@@ -7,9 +7,14 @@ from std_msgs.msg import String
 
 def talker():
     pub = rospy.Publisher('chatter', String, queue_size=10)
-    # Anon ensures that node has a unique name by adding random numbers to name
+    # In ROS, nodes are uniquely named. If two nodes with the same
+    # node are launched, the previous one is kicked off. The 
+    # anonymous=True flag means that rospy will choos a unique
+    # name for our 'talker' node
     rospy.init_node('talker', anonymous=True)
+    #set loop rate
     rate = rospy.Rate(10) # 10hz
+    # keep publishing unitl Ctr-C is pressed
     while not rospy.is_shutdown():
         hello_str = "hello world %s" % rospy.get_time()
         rospy.loginfo(hello_str)

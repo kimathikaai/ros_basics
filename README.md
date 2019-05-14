@@ -15,4 +15,5 @@ This repository acts as my note pad as I learn ROS Basics, Motion and OpenCV.
   
 
 ## Acknowledgments
+* Anis Koubaas's '[ROS Programming Tutorial](https://www.udemy.com/ros-essentials/)'
 * Vincent Driessen's '[Git Branching Model](https://nvie.com/posts/a-successful-git-branching-model/)'

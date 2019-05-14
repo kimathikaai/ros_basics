@@ -113,6 +113,10 @@ catkin_package(
 ## Build ##
 ###########
 
+add_executable(talker src/talker.cpp)
+target_link_libraries (talker ${catkin_LIBRARIES})
+add_dependencies(talker beginner_tutorials_generate_message_cpp)
+
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
 include_directories(

@@ -135,11 +135,11 @@ include_directories(
 ## The recommended prefix ensures that target names across packages don't collide
 # add_executable(${PROJECT_NAME}_node src/beginner_tutorials_node.cpp)
 
-add_executable(talker src/talker.cpp)
+add_executable(talker src/subscriber_publisher_template/cpp/talker.cpp)
 target_link_libraries (talker ${catkin_LIBRARIES})
 add_dependencies(talker beginner_tutorials_generate_message_cpp)
 
-add_executable(listener src/listener.cpp)
+add_executable(listener src/subscriber_publisher_template/cpp/listener.cpp)
 target_link_libraries(listener ${catkin_LIBRARIES})
 add_dependencies(listener beginner_tutorials_generate_messages_cpp)
 
